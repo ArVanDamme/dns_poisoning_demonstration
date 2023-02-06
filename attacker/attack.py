@@ -7,14 +7,13 @@
 
 from scapy.all import *
 
-if len(sys.argv) < 3:
-    print("Utilisation: attack.py [target (domaine)] [IP de redirection]")
-    sys.exit()
+# Ajouter une condition vérifiant qu'au lancement du script trois paramètre soient bien utilisé (La commmande plus deux arguments : Le domaine et l'IP)
+# Si cette condition n'est pas rempli alors on exit le programme et on print une erreur.
 
-hostname = sys.argv[1]
-print(hostname)
-fake_ip = sys.argv[2]
-print(fake_ip)
+# Ici on place le second argument (index 1) dans une variable nommé hostname
+
+# Ici on place le dernier argument (index 2) dans une variable nommé fake_ip
+
 cache_server_ip = "10.0.0.2"
 
 cache_server_port = 22222

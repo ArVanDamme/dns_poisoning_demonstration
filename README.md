@@ -15,30 +15,26 @@ On aura besoin dans ce TP de Docker Compose et de Docker.
 
 ### Build
 
-```bash
-docker-compose build
-docker-compose up
-```
+A) Commencons par corrigé le script attacker.py, toutes les indications se trouvent à l'intérieur !
+
+B) Une fois correctement corrigé, construire et lancer le docker-compose !
+
 Une fois lancé, le résolveur DNS et le sevreur DNS seront sur un mode d'écoute sur le port 53.
+
+C) Ouvrez maintenant le fichier server.py, essayer de comprendre son fonctionnement et de l'expliquer brièvement.
+
 
 ### L'attaque
 
 #### 1. Commencons par lancer le container d'attaque en mode console :
 
-```bash
-docker exec -it attacker bash
-```
+D) Rentré dans le docker de l'attaquant en mode intéractif via la console.
 
 #### 2. Une fois dedans on peut lancer une attaque via le script python attack.py
 
-On utilise ici google.com comme cible et 1.2.3.4 comme redirection
-
-```bash
-python attack.py google.com 1.2.3.4
-```
+E) Lancer une attaque sur un site internet quelconque (ex: google.com) et ajouter une IP de redirection (qui en théorie serait malveillante mais dans ce TP aucunement besoin de cela nous souhaitons simplement rediriger)
 
 #### 3. Dans le console principale on peut voir une réponse du DNS : 
-
 
 En sortie du conteneur `dns`, un "fake" DNS Record à bien été inséré en cache. On peut également le vérifier en se rendant dans le contenur de la victime.
 
@@ -46,17 +42,12 @@ En sortie du conteneur `dns`, un "fake" DNS Record à bien été inséré en cac
 
 #### Commencons par lancer le container de la vicitme en mode console
 
-
-```bash
-docker exec -it victim bash
-```
+F) Rentré dans le docker de la victime en mode intéractif via la console.
 
 #### 2. Une fois dedans on peut lancer la commande "dig" dans le but d'observer la redirection
 
-```bash
-dig google.com
-```
+G) Utiliser la commande dig pour observer la redirection que vous venez de mettre en place
 
-Cela devrait normalement afficher une réponse du serveyr google.com avec l'ip 1.2.3.4
-Et voila ! Vous avez correctement contourné l'adresse google.com d'une victime vers votre adresse 1.2.3.4
+Cela devrait normalement afficher une réponse du serveur avec le domaine voulu mais avec l'IP de redirection de l'attaquant.
+Et voila ! Vous avez correctement contourné un domaine d'une victime vers votre adresse IP choisie.
 
