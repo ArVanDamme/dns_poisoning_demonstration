@@ -15,7 +15,7 @@ class DNSServer(DatagramServer):
 
     def handle_dns_request(self, data, address):
 
-        request = DNSRecord.parse(data)address
+        request = DNSRecord.parse(data)
         dataName = str(request.q.qname)
         qID = request.header.id
 
